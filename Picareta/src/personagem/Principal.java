@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import picareta.Bloco;
 import picareta.Picareta;
 import picareta.PicaretaMadeira;
@@ -51,19 +52,13 @@ public class Principal extends Personagem{
     public Principal criarPersonagem(){
         String nome;
         Scanner input = new Scanner(System.in);
-        //BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         
-        System.out.println("Digite o nome do personagem: ");
-        nome = input.nextLine();
-        
+        nome = JOptionPane.showInputDialog("Digite o nome do personagem: ");
         Principal P = new Principal(nome);
         
-        System.out.println("Personagem "+ P.nome + " criado com sucesso!");
-        try {
-            System.in.read();
-        } catch (IOException ex) {
-            Logger.getLogger(Personagem.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        JOptionPane.showMessageDialog(null, "Personagem "+ P.nome + " criado com sucesso!");
+        
+        JOptionPane.showMessageDialog(null,"Clique 'OK' para continuar:");
         
         return P;
     }

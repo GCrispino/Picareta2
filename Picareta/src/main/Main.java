@@ -12,6 +12,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import picareta.Picareta;
 import picareta.PicaretaDiamante;
 import picareta.PicaretaMadeira;
@@ -155,20 +156,15 @@ public class Main {
                         rand = gerador.nextInt(10);
                         if (rand <= 3){
                             zumbi = new Zumbi();
-                            System.out.println("Um zumbi vai lhe atacar!");
+                            JOptionPane.showMessageDialog(null,"Um zumbi vai lhe atacar!");
                             rand = gerador.nextInt(10);
                             
                             picaretaplayer = player.buscaPicaretas();
                             
                             if (picaretaplayer == null){
                                 System.out.println("Você não tem nenhuma picareta para atacar o zumbi, é melhor fugir!");
-                                System.out.println("Aperte enter para fugir!");
-                                try {
-                                    System.in.read();
-                                } catch (IOException ex) {
-                                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-                                System.out.println("Você fugiu!");
+                                JOptionPane.showMessageDialog(null,"Clique OK para fugir!");
+                                JOptionPane.showMessageDialog(null,"Você fugiu!");
                             }
                             else if (rand < 8){
                                 System.out.println("Voce ganhou a chance de atacar!");
@@ -207,9 +203,10 @@ public class Main {
                                 }
                             }
                             else{
-                                System.out.println("Escolha um bloco para quebrar: ");
+                                String resposta;
                                 imprimeArrayBlocos(listabloco);
-                                nbloco = input.nextInt();
+                                resposta = JOptionPane.showInputDialog("Escolha um bloco para quebrar: ",rand);//input.nextInt();
+                                nbloco = Integer.parseInt(resposta);
                                 picaretaplayer = player.buscaPicaretas();
                                 PicaretaMadeira PM;
                                 PicaretaDiamante PD;
